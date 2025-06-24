@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-time Leaderboard</title>
+</head>
+<body>
+  <h1>Leaderboard</h1>
+
+  <form method="GET" action="/v1/leaderboard/view">
+    <label for="region">Region:</label>
+    <select name="region" id="region">
+      <option value="">All</option>
+      <option value="Asia" <%= filters.region === 'Asia' ? 'selected' : '' %>>Asia</option>
+      <option value="Europe" <%= filters.region === 'Europe' ? 'selected' : '' %>>Europe</option>
+      <option value="NA" <%= filters.region === 'NA' ? 'selected' : '' %>>NA</option>
+      <option value="SA" <%= filters.region === 'SA' ? 'selected' : '' %>>SA</option>
+      <option value="Africa" <%= filters.region === 'Africa' ? 'selected' : '' %>>Africa</option>
+    </select>
+
+    <label for="gameMode">Game Mode:</label>
+    <select name="gameMode" id="gameMode">
+      <option value="">All</option>
+      <option value="solo" <%= filters.gameMode === 'solo' ? 'selected' : '' %>>Solo</option>
+      <option value="duo" <%= filters.gameMode === 'duo' ? 'selected' : '' %>>Duo</option>
+      <option value="squad" <%= filters.gameMode === 'squad' ? 'selected' : '' %>>Squad</option>
+    </select>
+
+    <label for="limit">Limit:</label>
+    <input type="number" name="limit" id="limit" value="<%= filters.limit || 10 %>" min="1" />
+
+    <button type="submit">Apply Filters</button>
+    
+  </form>
+  <div id="filter-alert" style="display:none; color: red; margin-top: 10px; border: 1px solid red; padding: 10px;">
+    <span id="close-alert" style="cursor:pointer; float: right;">&times;</span>
+    A score was updated, but your current filters may hide the updated data.
+    <a href="/v1/leaderboard/view">Clear filters</a> to view latest changes.
+  </div>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Player ID</th>
+        <th>Name</th>
+        <th>Region</th>
+        <th>Game Mode</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody id="leaderboard-body">
+      <% players.forEach(player => { %>
+        <tr>
+          <td><%= player.playerId %></td>
+          <td><%= player.name %></td>
+          <td><%= player.region %></td>
+          <td><%= player.gameMode %></td>
+          <td><%= player.score %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+ 
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/leaderboard.js"></script>
+</body>
+</html>
