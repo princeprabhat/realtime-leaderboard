@@ -29,6 +29,9 @@ const config = {
     mongo: {
         uri: envVars.MONGO_URI,
     },
+    redis: {
+        url: envVars.UPSTASH_REDIS_REST_URL
+    }
 };
 
 export default config;

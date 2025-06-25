@@ -2,12 +2,13 @@ import { playerService } from "../services/index.js"
 import httpStatus from 'http-status'
 import ApiError from "../utils/ApiError.js"
 import catchAsync from "../utils/catchAsync.js"
-
+import redis from "../config/redis.js"
 import { getIo } from "../socket.js"
 
 
 const createPlayer = catchAsync(async (req, res) => {
     const newPlayer = await playerService.createPlayer(req.body);
+    await redis.flushall();
     const io = getIo();
     io.emit('scoreUpdated', { playerId: req.body.playerId, score: req.body.score });
     res.status(httpStatus.CREATED).json({ player: newPlayer })
@@ -20,7 +21,7 @@ const updateScore = catchAsync(async (req, res) => {
     }
 
     const updatedPlayer = await playerService.updateScore(req.params.playerId, req.body.score);
-
+    await redis.flushall();
     const io = getIo();
     io.emit('scoreUpdated', { playerId: req.params.playerId, score: req.body.score });
 

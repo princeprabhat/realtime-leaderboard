@@ -1,7 +1,7 @@
 import { leaderboardService } from "../services/index.js"
 import catchAsync from "../utils/catchAsync.js"
 import httpStatus from 'http-status'
-import ApiError from "../utils/ApiError.js"
+
 
 const getTopPlayers = catchAsync(async (req, res) => {
     const { limit, region, gameMode } = req.query;
