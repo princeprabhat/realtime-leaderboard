@@ -20,10 +20,10 @@ A backend system to track real-time player scores using **Socket.IO**, **MongoDB
 ### 🔗 Demo Links
 
 - 🔍 **Leaderboard UI**  
-  [`http://localhost:5000/v1/leaderboard/view`](http://localhost:5000/v1/leaderboard/view)
+  [`https://realtime-leaderboard-5bj0.onrender.com/v1/leaderboard/view`](https://realtime-leaderboard-5bj0.onrender.com/v1/leaderboard/view)
 
 - ➕ **Create Player (POST)**  
-  `POST /v1/players/create`  
+  `POST /v1/players/c...`  
   Body:
   ```json
   {
@@ -35,7 +35,7 @@ A backend system to track real-time player scores using **Socket.IO**, **MongoDB
   }
   ```
 - ✏️ **Update Score (PATCH)**
-  `PATCH /v1/players/:playerId/score`
+  `PATCH /v1/players/updateScore/:playerId`
   Body:
   ```json
   {
