@@ -17,13 +17,15 @@ A backend system to track real-time player scores using **Socket.IO**, **MongoDB
 
 ---
 
+- ⚠️ **This deployment is open for demo purposes only. Please do not misuse the API. Free tier limits apply.**
+
 ### 🔗 Demo Links
 
 - 🔍 **Leaderboard UI**  
   [`https://realtime-leaderboard-5bj0.onrender.com/v1/leaderboard/view`](https://realtime-leaderboard-5bj0.onrender.com/v1/leaderboard/view)
 
 - ➕ **Create Player (POST)**  
-  `POST /v1/players/c...`  
+  `POST https://realtime-leaderboard-5bj0.onrender.com/v1/players/create`  
   Body:
   ```json
   {
@@ -35,7 +37,7 @@ A backend system to track real-time player scores using **Socket.IO**, **MongoDB
   }
   ```
 - ✏️ **Update Score (PATCH)**
-  `PATCH /v1/players/updateScore/:playerId`
+  `PATCH https://realtime-leaderboard-5bj0.onrender.com/v1/players/updateScore/:playerId`
   Body:
   ```json
   {
@@ -43,7 +45,7 @@ A backend system to track real-time player scores using **Socket.IO**, **MongoDB
   }
   ```
 - **Top Players (GET)**
-  `GET /v1/leaderboard/top`
+  `GET https://realtime-leaderboard-5bj0.onrender.com/v1/leaderboard/top`
 
 ```
 filter Query => region=Asia&gameMode=solo&limit=5
@@ -82,7 +84,7 @@ filter Query => region=Asia&gameMode=solo&limit=5
 **Clone repo**
 
 ```
-git clone https://github.com/your-username/realtime-leaderboard.git
+git clone https://github.com/princeprabhat/realtime-leaderboard.git
 cd realtime-leaderboard
 npm install
 ```
