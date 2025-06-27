@@ -33,6 +33,7 @@ app.use((req, res, next) => {
     if (req.originalUrl.startsWith('/.well-known')) {
         return res.sendStatus(204);
     }
+
     next(new ApiError(httpStatus.NOT_FOUND, "Not a valid request"))
 })
 

@@ -116,9 +116,3 @@ npm start
     ✅ Clean modular architecture
     ✅ Real-time backend in action
     ✅ Includes both REST APIs & live frontend
-
-### ✨ Bonus
-
-    ✅ MongoDB Index: { region: 1, gameMode: 1, score: -1 }
-    ✅ Live UI refresh with socket events
-    ✅ Filter alert when new scores don’t match current filters

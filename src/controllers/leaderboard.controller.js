@@ -14,7 +14,7 @@ const renderLeaderBoard = catchAsync(async (req, res) => {
 
     const topScores = await leaderboardService.getTopScores(limit, region, gameMode);
 
-    res.render('leaderboard', {
+    return res.render('leaderboard', {
         players: topScores,
         filters: { limit, region, gameMode }
     });
